@@ -1,6 +1,12 @@
 import sqlite3
+import os
 
-conn = sqlite3.connect("./database/user.db")
+database_position = "./database/user.db"
+if not os.path.exists(database_position):
+    print("数据库已存在，请删除 user.db 后再试!")
+    exit()
+
+conn = sqlite3.connect(database_position)
 cursor = conn.cursor()
 sql_init_command = "CREATE TABLE user_table (id INTEGER PRIMARY KEY, user_name TEXT, hashed_password TEXT)"
 cursor.execute(sql_init_command)
