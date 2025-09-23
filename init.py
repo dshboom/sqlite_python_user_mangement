@@ -8,7 +8,7 @@ if not os.path.exists(database_position):
 
 conn = sqlite3.connect(database_position)
 cursor = conn.cursor()
-sql_init_command = "CREATE TABLE user_table (id INTEGER PRIMARY KEY, user_name TEXT, hashed_password TEXT)"
+sql_init_command = "CREATE TABLE user_table (id INTEGER PRIMARY KEY, user_name TEXT NOT NULL UNIQUE, hashed_password TEXT NOT NULL UNIQUE)"
 cursor.execute(sql_init_command)
 conn.commit()
 conn.close()
